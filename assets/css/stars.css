@@ -1,0 +1,58 @@
+.starsMainImage {
+    max-width: 100%;
+    height: auto;
+    width: auto; /* ie8 */
+}
+
+#starDialog {
+    display: none;
+}
+
+#starDialog {
+    font-size: 80%;
+}
+
+p.speech
+{
+    font-size: 60%;
+    z-index: 10;
+    position: relative;
+    width: 160px;
+    height: 160px;
+    text-align: left;
+    /*line-height: 30px;*/
+    line-height: 150%;
+    color: #eee;
+    background-color: #000;
+    border: 2px solid #666;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 2px #888;
+    -moz-box-shadow: 2px 2px 2px #888;
+    box-shadow: 2px 2px 1px #888;
+}
+
+/*p.speech:after*/
+/*{*/
+    /*content: ' ';*/
+    /*position: absolute;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*left: 30px;*/
+    /*top: 100px;*/
+    /*border: 25px solid;*/
+    /*border-color: #666 transparent transparent #666;*/
+/*}*/
+
+/*p.speech:before*/
+/*{*/
+    /*content: ' ';*/
+    /*position: absolute;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*left: 0px;*/
+    /*top: 0px;*/
+    /*border: 15px solid;*/
+    /*border-color: #fff transparent transparent #fff;*/
+/*}*/

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Star Map (Shanqing Cai's Homepage)</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/stars.css" />
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+</head>
+
+<body>
+
+<div>
+    <script src="assets/js/underscore-1.8.3.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/js/imageMapResizer.min.js"></script>
+
+    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+
+    <img name="starMapMain" class="starsMainImage" usemap="#starsImageMap" src="images/HomeTreeLyraCygnus-overlays.jpg" />
+
+    <map name="starsImageMap">
+        <area id="cygnus_Alpha" shape="circle" coords="2570,700,30" href="">
+        <area id="cygnus_Gamma" shape="circle" coords="2293,1017,20" href="">
+        <area id="cygnus_Delta" shape="circle" coords="2765,1345,20" href="">
+        <area id="cygnus_Epsilon" shape="circle" coords="1793,809,20" href="">
+        <area id="cygnus_Beta" shape="circle" coords="1765,1981,30" href="">
+        <area id="cygnus_Iota" shape="circle" coords="3238,1324,20" href="">
+        <area id="cygnus_Kappa" shape="circle" coords="3398,1392,20" href="">
+        <area id="cygnus_Nu" shape="circle" coords="2251,560,20" href="">
+        <area id="cygnus_Zeta" shape="circle" coords="1457,466,20" href="">
+        <area id="cygnus_Eta" shape="circle" coords="2076,1456,20" href="">
+        <area id="cygnus_31" shape="circle" coords="2750,992,20" href="">
+        <area id="cygnus_32" shape="circle" coords="2804,950,20" href="">
+        <area id="cygnus_V1584" shape="circle" coords="2732,918,20" href="">
+
+        <area id="lyra_Alpha" shape="circle" coords="2777,2297,30" href="">
+        <area id="lyra_Zeta" shape="circle" coords="2653,2253,20" href="">
+        <area id="lyra_Epsilon" shape="circle" coords="2772,2184,20" href="">
+        <area id="lyra_Delta" shape="circle" coords="2545,2164,20" href="">
+        <area id="lyra_Beta" shape="circle" coords="2369,2339,20" href="">
+        <area id="lyra_Gamma" shape="circle" coords="2268,2250,20" href="">
+    </map>
+
+    <div id="starDialog" title="Star Info">
+        <p>This is a star.</p>
+    </div>
+
+    <p class="speech" id="starSpeech">SitePoint Rocks!</p>
+
+    <script type="text/javascript">
+        var starInfoTemp =
+                _.template("<a href='<%= WikipediaLink %>' target='_blank'><%= StarName %></a><br/><%= NameChinese %><br/>" +
+                           "<br/>Distance: <%= Dist %> ly" +
+                           "<br/>Apparent mag.: <%= ApparentMag %> ");
+
+        /* DO NOT EDIT: Auto-filled */
+var starData = {
+    "cygnus_Alpha": {
+        "StarName": "Alpha Cygnus (Deneb)",
+        "ApparentMag": "1.250",
+        "Dist": 1411.9306286239998,
+        "NameChinese": "天鹅座α / 天津四",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Deneb"
+    },
+    "cygnus_Gamma": {
+        "StarName": "Gamma Cygnus (Sadr)",
+        "ApparentMag": "2.230",
+        "Dist": 1832.337232568,
+        "NameChinese": "天鹅座γ / 天津一",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Gamma_Cygni"
+    },
+    "cygnus_Delta": {
+        "StarName": "Delta Cygnus",
+        "ApparentMag": "2.860",
+        "Dist": 164.97524945199999,
+        "NameChinese": "天鹅座δ / 天津二",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Delta_Cygni"
+    },
+    "cygnus_Epsilon": {
+        "StarName": "Epsilon Cygnus (Gienah)",
+        "ApparentMag": "2.480",
+        "Dist": 72.705390896,
+        "NameChinese": "天鹅座ε / 天津九",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Epsilon_Cygni"
+    },
+    "cygnus_Beta": {
+        "StarName": "Beta Cygnus",
+        "ApparentMag": "5.120",
+        "Dist": 399.70091644,
+        "NameChinese": "天鹅座β",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Albireo"
+    },
+    "cygnus_Iota": {
+        "StarName": "Iota Cygnus",
+        "ApparentMag": "3.760",
+        "Dist": 121.33785974399999,
+        "NameChinese": "天鹅座ι",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Iota1_Cygni"
+    },
+    "cygnus_Kappa": {
+        "StarName": "Kappa Cygnus",
+        "ApparentMag": "3.800",
+        "Dist": 124.155195272,
+        "NameChinese": "天鹅座κ / 奚仲一",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Kappa_Cygni"
+    },
+    "cygnus_Nu": {
+        "StarName": "Nu Cygnus",
+        "ApparentMag": "3.940",
+        "Dist": 374.46166053599995,
+        "NameChinese": "天鹅座ν / 天津五",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Nu_Cygni"
+    },
+    "cygnus_Zeta": {
+        "StarName": "Zeta Cygnus",
+        "ApparentMag": "3.210",
+        "Dist": 143.113665084,
+        "NameChinese": "天鹅座ζ / 天津八",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Zeta_Cygni"
+    },
+    "cygnus_Eta": {
+        "StarName": "Eta Cygnus",
+        "ApparentMag": "3.890",
+        "Dist": 134.942478816,
+        "NameChinese": "天鹅座η / 辇道增五",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/32_Cygni"
+    },
+    "cygnus_31": {
+        "StarName": "31 Cygnus",
+        "ApparentMag": "3.800",
+        "Dist": 883.8915662119999,
+        "NameChinese": "天鹅座31",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/31_Cygni"
+    },
+    "cygnus_32": {
+        "StarName": "32 Cygnus",
+        "ApparentMag": "3.960",
+        "Dist": 1058.9479714679999,
+        "NameChinese": "天鹅座32",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/32_Cygni"
+    },
+    "cygnus_V1584": {
+        "StarName": "V1584 Cygnus",
+        "ApparentMag": "6.490",
+        "Dist": 1156.5814654439998,
+        "NameChinese": "天鹅座V1584",
+        "WikipediaLink": "http://server7.wikisky.org/starview?object_type=1&object_id=8598&object_name=HR+7786&locale=ZH"
+    },
+    "lyra_Alpha": {
+        "StarName": "Alpha Lyra (Vega)",
+        "ApparentMag": "0.030",
+        "Dist": 25.044540771999998,
+        "NameChinese": "天琴座ε / 织女一",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Vega"
+    },
+    "lyra_Zeta": {
+        "StarName": "Zeta Lyra",
+        "ApparentMag": "5.730",
+        "Dist": 155.534664032,
+        "NameChinese": "天琴座ζ / 织女三",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Zeta_Lyrae"
+    },
+    "lyra_Epsilon": {
+        "StarName": "Epsilon Lyra",
+        "ApparentMag": "4.590",
+        "Dist": 155.534664032,
+        "NameChinese": "天琴座ε / 织女二",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Epsilon_Lyrae"
+    },
+    "lyra_Delta": {
+        "StarName": "Delta Lyra",
+        "ApparentMag": "4.220",
+        "Dist": 736.243680416,
+        "NameChinese": "天琴座δ2",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Delta2_Lyrae"
+    },
+    "lyra_Beta": {
+        "StarName": "Beta Lyra (Sheliak)",
+        "ApparentMag": "3.520",
+        "Dist": 962.112255068,
+        "NameChinese": "天琴座β / 渐台二",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Beta_Lyrae"
+    },
+    "lyra_Gamma": {
+        "StarName": "Gamma Lyra",
+        "ApparentMag": "3.250",
+        "Dist": 620.068543996,
+        "NameChinese": "天琴座β / 渐台三",
+        "WikipediaLink": "https://en.wikipedia.org/wiki/Gamma_Lyrae"
+    }
+};
+/* ~DO NOT EDIT: Auto-filled */
+
+        $(function() {
+            $("map").imageMapResize();
+
+            var starClickCallback = function(e) {
+                e.preventDefault();
+
+                $("#starSpeech").html(starInfoTemp(starData[e.target.id]));
+
+                var coordsItems = $("#" + e.target.id).attr("coords").split(",");
+                var starX = Number(coordsItems[0]);
+                var starY = Number(coordsItems[1]);
+                var starRadius = Number(coordsItems[2]);
+
+                $("#starSpeech").css({
+                    position: "absolute",
+                    top: starY + starRadius,
+                    left: starX + starRadius
+                });
+
+//                return false;
+            };
+
+            $("map").hover(function(e) { starClickCallback(e); });
+
+//            $("#cygnus_Alpha").hover(function(e) { starClickCallback(e); });
+//            $("#cygnus_Beta").hover(function(e) { starClickCallback(e); });
+//            $("#cygnus_Delta").hover(function(e) { starClickCallback(e); });
+//            $("#cygnus_Gamma").hover(function(e) { starClickCallback(e); });
+//            $("#cygnus_Epsilon").hover(function(e) { starClickCallback(e); });
+//            $("#cygnus_Iota").hover(function(e) { starClickCallback(e); });
+//
+//            $("#lyra_Alpha").hover(function(e) { starClickCallback(e); });
+
+            $("#starDialog").dialog({
+                autoOpen: false
+            });
+
+            $("#starDialog").hide();
+        });
+
+
+    </script>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
